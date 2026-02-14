@@ -284,10 +284,10 @@
         function createPhotoGrid() {
             // Sample photo data - you can replace these with your actual photos
             const photos = [
-                { emoji: "📸", caption: "Our first date" },
-                { emoji: "🌅", caption: "Beautiful days together" },           
-                { emoji: "🎂", caption: "Together Forever" },
-                { emoji: "✈️", caption: "Us" }
+                { emoji: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG_20201018_093639.jpg?raw=true", caption: "Our first date" },
+                { emoji: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG-20230319-WA0004.jpg?raw=true", caption: "Beautiful days together" },           
+                { emoji: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG-20230730-WA0025.jpg?raw=true", caption: "Together Forever" },
+                { emoji: "https://github.com/HariG2001/valentine-for-her/blob/main/images/InShot_20230207_214651088.jpg?raw=true", caption: "Till the End" }
             ];
 
             // Clear existing photos
@@ -299,9 +299,10 @@
                 photoCard.className = 'photo-card';
                 
                 photoCard.innerHTML = `
-                    <div class="photo-placeholder">${photo.emoji}</div>
-                    <div class="photo-caption">${photo.caption}</div>
-                `;
+                     <img src="${photo.url}" alt="${photo.caption}" 
+         style="width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
+    <div class="photo-caption">${photo.caption}</div>
+    `;
                 
                 photoGrid.appendChild(photoCard);
             });
@@ -372,4 +373,5 @@
         });
     </script>
 </body>
+
 </html>
