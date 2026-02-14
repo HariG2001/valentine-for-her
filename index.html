@@ -281,39 +281,52 @@
         });
 
         // Function to create photo grid
-        function createPhotoGrid() {
-            // Sample photo data - you can replace these with your actual photos
-            const photos = [
-                { url: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG_20201018_093639.jpg?raw=true", caption: "Our first date" },
-                { url: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG-20230319-WA0004.jpg?raw=true", caption: "Beautiful days together" },           
-                { url: "https://github.com/HariG2001/valentine-for-her/blob/main/images/IMG-20230730-WA0025.jpg?raw=true", caption: "Together Forever" },
-                { url: "https://github.com/HariG2001/valentine-for-her/blob/main/images/InShot_20230207_214651088.jpg?raw=true", caption: "Till the End" }
-            ];
-
-            // Clear existing photos
-            photoGrid.innerHTML = '';
-
-            // Create photo cards
-            photos.forEach(photo => {
-                const photoCard = document.createElement('div');
-                photoCard.className = 'photo-card';
-                
-                photoCard.innerHTML = `
-                     <img src="${photo.url}" alt="${photo.caption}" 
-         style="width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
-    <div class="photo-caption">${photo.caption}</div>
-    `;
-                
-                photoGrid.appendChild(photoCard);
-            });
-
-            // Add animation to each photo card
-            const cards = document.querySelectorAll('.photo-card');
-            cards.forEach((card, index) => {
-                card.style.animation = `fadeIn 0.5s ease ${index * 0.1}s forwards`;
-                card.style.opacity = '0';
-            });
+function createPhotoGrid() {
+    // FIXED: Changed 'emoji' to 'url' and used correct raw GitHub URLs
+    const photos = [
+        { 
+            url: "https://raw.githubusercontent.com/HariG2001/valentine-for-her/main/images/IMG_20201018_093639.jpg", 
+            caption: "Our first date" 
+        },
+        { 
+            url: "https://raw.githubusercontent.com/HariG2001/valentine-for-her/main/images/IMG-20230319-WA0004.jpg", 
+            caption: "Beautiful days together" 
+        },           
+        { 
+            url: "https://raw.githubusercontent.com/HariG2001/valentine-for-her/main/images/IMG-20230730-WA0025.jpg", 
+            caption: "Together Forever" 
+        },
+        { 
+            url: "https://raw.githubusercontent.com/HariG2001/valentine-for-her/main/images/InShot_20230207_214651088.jpg", 
+            caption: "Till the End" 
         }
+    ];
+
+    // Clear existing photos
+    photoGrid.innerHTML = '';
+
+    // Create photo cards
+    photos.forEach(photo => {
+        const photoCard = document.createElement('div');
+        photoCard.className = 'photo-card';
+        
+        photoCard.innerHTML = `
+            <img src="${photo.url}" alt="${photo.caption}" 
+                 style="width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:10px;"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Loading+Error';">
+            <div class="photo-caption">${photo.caption}</div>
+        `;
+        
+        photoGrid.appendChild(photoCard);
+    });
+
+    // Add animation to each photo card
+    const cards = document.querySelectorAll('.photo-card');
+    cards.forEach((card, index) => {
+        card.style.animation = `fadeIn 0.5s ease ${index * 0.1}s forwards`;
+        card.style.opacity = '0';
+    });
+}
 
         // Initialize floating hearts
         createFloatingHearts();
@@ -375,4 +388,5 @@
 </body>
 
 </html>
+
 
